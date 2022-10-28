@@ -1,0 +1,4 @@
+interface ISingleMoveInList{
+  imdbID:string;
+  
+}

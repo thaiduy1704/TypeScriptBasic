@@ -1,0 +1,27 @@
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+import styled from 'styled-components';
+import { Loading, Movie, MovieList, SearchForm } from '../components/index';
+import { useEffect } from 'react';
+const HomePage = () => {
+	const { isLoading, query } = useAppSelector((store) => store.movie);
+
+	const dispatch = useAppDispatch();
+
+	useEffect(() => {
+    dis
+  
+    return () => {
+      second
+    }
+  }, [third])
+  
+
+	return (
+		<Container>
+			<MovieList />
+		</Container>
+	);
+};
+const Container = styled.div``;
+
+export default HomePage;
