@@ -1,27 +1,28 @@
 import React, { useState } from 'react';
 import './App.css';
-
+import Category from './components/Category';
+import Food, { FoodType } from './components/Food';
 import styled from 'styled-components';
 import { data } from './data/data';
-import Category from './components/Category';
-import Food, { IFood } from './components/Food';
 
-const categories = [
+const allCategories = [
 	'all',
 	...Array.from(new Set(data.map((item) => item.category))),
 ];
-function App() {
-	const [menu, setMenu] = useState<IFood[]>(data);
 
-	const filterFood = (category: string) => {
+function App() {
+	const [items, setItems] = useState<FoodType[]>(data);
+
+	const filterMenu = (category: string) => {
 		if (category === 'all') {
-			setMenu(data);
+			setItems(data);
+			return items;
 		} else {
-			const newFood = data.filter((item) => item.category === category);
-			setMenu(newFood);
+			const newItems = data.filter((item) => item.category === category);
+			setItems(newItems);
+			return items;
 		}
 	};
-
 	return (
 		<Wrapper className='App'>
 			<div className='title'>
@@ -29,10 +30,12 @@ function App() {
 				<div className='underline'></div>
 			</div>
 			<div className='content'>
-				<Category categories={categories} filterFood={filterFood} />
-				{menu.map((food) => {
-					return <Food key={food.id} {...food} />;
-				})}
+				<Category categories={allCategories} filterMenu={filterMenu} />
+				<div className='menu'>
+					{items.map((item) => {
+						return <Food {...item} key={item.id} />;
+					})}
+				</div>
 			</div>
 		</Wrapper>
 	);

@@ -12,15 +12,7 @@ const categories = [
 ];
 function App() {
 	const [menu, setMenu] = useState<IFood[]>(data);
-
-	const filterFood = (category: string) => {
-		if (category === 'all') {
-			setMenu(data);
-		} else {
-			const newFood = data.filter((item) => item.category === category);
-			setMenu(newFood);
-		}
-	};
+	const filterFood = (category: string) => {};
 
 	return (
 		<Wrapper className='App'>

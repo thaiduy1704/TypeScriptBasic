@@ -9,14 +9,13 @@ const Category = ({ categories, filterFood }: ICategories) => {
 	const [pickedCategory, setPickedCategory] = useState('all');
 	return (
 		<Wrapper>
-			{categories.map((category, id) => {
+			{categories.map((category, index) => {
 				return (
 					<button
+						key={index}
 						className={`${category === pickedCategory ? 'active' : ''}`}
-						key={id}
 						onClick={() => {
 							setPickedCategory(category);
-							filterFood(category);
 						}}>
 						{category}
 					</button>

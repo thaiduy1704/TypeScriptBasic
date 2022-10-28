@@ -1,22 +1,23 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-export interface ICategories {
+
+export interface CategoriesType {
 	categories: string[];
-	filterFood: (category: string) => void;
+	filterMenu: (category: string) => void;
 }
 
-const Category = ({ categories, filterFood }: ICategories) => {
-	const [pickedCategory, setPickedCategory] = useState('all');
+const Category: React.FC<CategoriesType> = ({ categories, filterMenu }) => {
+	const [pickUpCategory, setPickUpCategory] = useState<string>('all');
 	return (
 		<Wrapper>
-			{categories.map((category, id) => {
+			{categories.map((category, index) => {
 				return (
 					<button
-						className={`${category === pickedCategory ? 'active' : ''}`}
-						key={id}
+						className={`${category === pickUpCategory ? 'active' : ''}`}
+						key={index}
 						onClick={() => {
-							setPickedCategory(category);
-							filterFood(category);
+							setPickUpCategory(category);
+							filterMenu(category);
 						}}>
 						{category}
 					</button>

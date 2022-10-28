@@ -12,16 +12,6 @@ const categories = [
 ];
 function App() {
 	const [menu, setMenu] = useState<IFood[]>(data);
-
-	const filterFood = (category: string) => {
-		if (category === 'all') {
-			setMenu(data);
-		} else {
-			const newFood = data.filter((item) => item.category === category);
-			setMenu(newFood);
-		}
-	};
-
 	return (
 		<Wrapper className='App'>
 			<div className='title'>
@@ -29,10 +19,8 @@ function App() {
 				<div className='underline'></div>
 			</div>
 			<div className='content'>
-				<Category categories={categories} filterFood={filterFood} />
-				{menu.map((food) => {
-					return <Food key={food.id} {...food} />;
-				})}
+				<Category />
+				<Food />
 			</div>
 		</Wrapper>
 	);

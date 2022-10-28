@@ -1,5 +1,7 @@
+import React from 'react';
 import styled from 'styled-components';
-export interface IFood {
+
+export interface FoodType {
 	id: number;
 	title: string;
 	category: string;
@@ -7,7 +9,15 @@ export interface IFood {
 	img: string;
 	desc: string;
 }
-const Food = ({ id, title, price, img, desc, category }: IFood) => {
+
+const Food: React.FC<FoodType> = ({
+	id,
+	title,
+	category,
+	price,
+	img,
+	desc,
+}) => {
 	return (
 		<Wrapper>
 			<img src={img} alt={title} />
@@ -21,7 +31,6 @@ const Food = ({ id, title, price, img, desc, category }: IFood) => {
 		</Wrapper>
 	);
 };
-
 const Wrapper = styled.article`
 	display: grid;
 	grid-template-columns: 20rem 1fr;
@@ -55,5 +64,4 @@ const Wrapper = styled.article`
 		}
 	}
 `;
-
 export default Food;

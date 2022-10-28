@@ -12,7 +12,7 @@ const categories = [
 ];
 function App() {
 	const [menu, setMenu] = useState<IFood[]>(data);
-
+	const [category, setcategory] = useState(second);
 	const filterFood = (category: string) => {
 		if (category === 'all') {
 			setMenu(data);

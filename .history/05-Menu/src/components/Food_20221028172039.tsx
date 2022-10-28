@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import React from 'react';
 export interface IFood {
 	id: number;
 	title: string;

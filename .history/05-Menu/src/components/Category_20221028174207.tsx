@@ -24,6 +24,7 @@ const Category = ({ categories, filterFood }: ICategories) => {
 			})}
 		</Wrapper>
 	);
+	);
 };
 
 const Wrapper = styled.div`
