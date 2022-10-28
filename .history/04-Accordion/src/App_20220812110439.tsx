@@ -10,8 +10,8 @@ function App() {
 				<h1>Question and Answer about login</h1>
 			</div>
 			<div className='question__container'>
-				{data.map((item) => {
-					return <Question {...item} />;
+				{data.map((item, index) => {
+					return <Question {...item} key={index} />;
 				})}
 			</div>
 		</Wrapper>

@@ -7,14 +7,10 @@ export interface IQuestion {
 	info: string;
 }
 
-const Question = ({ id, title, info }: IQuestion) => {
-	const [showMore, setShowMore] = useState<Boolean>(true);
-
-	const toggleShowMore = () => {
-		setShowMore(!showMore);
-	};
-	return (
-		<Wrapper>
+const Question = ({ id, title, info }: 
+	IQuestion) => {
+		const [showMore, setShowMore] = useState<Boolean>(true)
+	return<Wrapper>
 			<header>
 				<h3>{title}</h3>
 				<button onClick={() => toggleShowMore()}>

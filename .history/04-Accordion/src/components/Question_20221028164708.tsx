@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
+import React from 'react';
+
 export interface IQuestion {
 	id: number;
 	title: string;
@@ -8,22 +7,7 @@ export interface IQuestion {
 }
 
 const Question = ({ id, title, info }: IQuestion) => {
-	const [showMore, setShowMore] = useState<Boolean>(true);
-
-	const toggleShowMore = () => {
-		setShowMore(!showMore);
-	};
-	return (
-		<Wrapper>
-			<header>
-				<h3>{title}</h3>
-				<button onClick={() => toggleShowMore()}>
-					{showMore ? <AiOutlineMinus></AiOutlineMinus> : <AiOutlinePlus />}
-				</button>
-			</header>
-			{showMore && <p>{info}</p>}
-		</Wrapper>
-	);
+	return <div>Question</div>;
 };
 
 const Wrapper = styled.article`

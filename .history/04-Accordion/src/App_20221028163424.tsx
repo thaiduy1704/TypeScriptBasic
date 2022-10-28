@@ -4,18 +4,7 @@ import styled from 'styled-components';
 import { data } from './data/data';
 import Question from './components/Question';
 function App() {
-	return (
-		<Wrapper>
-			<div className='info'>
-				<h1>Question and Answer about login</h1>
-			</div>
-			<div className='question__container'>
-				{data.map((item) => {
-					return <Question {...item} />;
-				})}
-			</div>
-		</Wrapper>
-	);
+	return <Wrapper></Wrapper>;
 }
 
 const Wrapper = styled.main`

@@ -9,11 +9,7 @@ function App() {
 			<div className='info'>
 				<h1>Question and Answer about login</h1>
 			</div>
-			<div className='question__container'>
-				{data.map((item) => {
-					return <Question {...item} />;
-				})}
-			</div>
+			<div className='question__container'></div>
 		</Wrapper>
 	);
 }

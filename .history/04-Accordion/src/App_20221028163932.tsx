@@ -11,7 +11,7 @@ function App() {
 			</div>
 			<div className='question__container'>
 				{data.map((item) => {
-					return <Question {...item} />;
+					return <Question />;
 				})}
 			</div>
 		</Wrapper>
