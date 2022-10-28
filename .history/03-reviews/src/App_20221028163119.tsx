@@ -17,16 +17,12 @@ function App() {
 		});
 	};
 	const prevPage = () => {
-		setIndex((oldIndex) => {
-			const prevIndex = oldIndex - 1;
-			if (prevIndex < 0) return data.length - 1;
-			return prevIndex;
-		});
+		setIndex((oldIndex)=>{
+			const prevIndex = oldIndex -1 ;
+			if(prevIndex<0)
+		})
 	};
-	const randomPage = () => {
-		const random = Math.floor(Math.random() * data.length);
-		setIndex(random);
-	};
+	const randomPage = () => {};
 
 	useEffect(() => {
 		setReview(data[index]);

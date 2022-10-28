@@ -16,17 +16,8 @@ function App() {
 			return nextIndex;
 		});
 	};
-	const prevPage = () => {
-		setIndex((oldIndex) => {
-			const prevIndex = oldIndex - 1;
-			if (prevIndex < 0) return data.length - 1;
-			return prevIndex;
-		});
-	};
-	const randomPage = () => {
-		const random = Math.floor(Math.random() * data.length);
-		setIndex(random);
-	};
+	const prevPage = () => {};
+	const randomPage = () => {};
 
 	useEffect(() => {
 		setReview(data[index]);

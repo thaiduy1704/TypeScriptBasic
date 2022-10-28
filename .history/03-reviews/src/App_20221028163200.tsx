@@ -24,8 +24,7 @@ function App() {
 		});
 	};
 	const randomPage = () => {
-		const random = Math.floor(Math.random() * data.length);
-		setIndex(random);
+		setIndex(oldIndex);
 	};
 
 	useEffect(() => {

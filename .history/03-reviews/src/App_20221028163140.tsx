@@ -23,10 +23,7 @@ function App() {
 			return prevIndex;
 		});
 	};
-	const randomPage = () => {
-		const random = Math.floor(Math.random() * data.length);
-		setIndex(random);
-	};
+	const randomPage = () => {};
 
 	useEffect(() => {
 		setReview(data[index]);

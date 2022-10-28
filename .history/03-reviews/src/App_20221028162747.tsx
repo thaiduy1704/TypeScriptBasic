@@ -9,24 +9,9 @@ function App() {
 	const [index, setIndex] = useState<number>(0);
 	const [review, setReview] = useState<IReview>(data[index]);
 
-	const nextPage = () => {
-		setIndex((oldIndex) => {
-			const nextIndex = oldIndex + 1;
-			if (nextIndex > data.length - 1) return 0;
-			return nextIndex;
-		});
-	};
-	const prevPage = () => {
-		setIndex((oldIndex) => {
-			const prevIndex = oldIndex - 1;
-			if (prevIndex < 0) return data.length - 1;
-			return prevIndex;
-		});
-	};
-	const randomPage = () => {
-		const random = Math.floor(Math.random() * data.length);
-		setIndex(random);
-	};
+	const nextPage = () => {};
+	const prevPage = () => {};
+	const randomPage = () => {};
 
 	useEffect(() => {
 		setReview(data[index]);

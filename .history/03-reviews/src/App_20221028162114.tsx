@@ -3,30 +3,14 @@ import './App.css';
 
 import { data } from './data/data';
 import styled from 'styled-components';
-import Review, { IReview } from './components/Review';
 
 function App() {
 	const [index, setIndex] = useState<number>(0);
-	const [review, setReview] = useState<IReview>(data[index]);
+	const [review, setReview] = useState(data[index]);
 
-	const nextPage = () => {
-		setIndex((oldIndex) => {
-			const nextIndex = oldIndex + 1;
-			if (nextIndex > data.length - 1) return 0;
-			return nextIndex;
-		});
-	};
-	const prevPage = () => {
-		setIndex((oldIndex) => {
-			const prevIndex = oldIndex - 1;
-			if (prevIndex < 0) return data.length - 1;
-			return prevIndex;
-		});
-	};
-	const randomPage = () => {
-		const random = Math.floor(Math.random() * data.length);
-		setIndex(random);
-	};
+	const nextPage = () => {};
+	const prevPage = () => {};
+	const randowPage = () => {};
 
 	useEffect(() => {
 		setReview(data[index]);
@@ -36,13 +20,6 @@ function App() {
 		<Wrapper className='App'>
 			<div className='title'>
 				<h1>Our Reviews</h1>
-				<div className='underline'></div>
-				<Review
-					{...review}
-					nextPage={nextPage}
-					prevPage={prevPage}
-					randomPage={randomPage}
-				/>
 			</div>
 		</Wrapper>
 	);

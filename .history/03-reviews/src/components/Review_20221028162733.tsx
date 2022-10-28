@@ -44,7 +44,7 @@ const Review: React.FC<IReview & IReviewFunction> = ({
 				</button>
 			</div>
 			<button className='surprise' onClick={randomPage}>
-				Random
+				Surprise me
 			</button>
 		</Wrapper>
 	);

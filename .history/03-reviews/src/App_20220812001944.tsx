@@ -1,49 +1,56 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-
+import Review, { ReviewType, ReviewFuntion } from './components/Review';
 import { data } from './data/data';
 import styled from 'styled-components';
-import Review, { IReview } from './components/Review';
 
 function App() {
 	const [index, setIndex] = useState<number>(0);
-	const [review, setReview] = useState<IReview>(data[index]);
+	const [review, setReview] = useState<ReviewType>(data[index]);
+	// console.log(review);
 
 	const nextPage = () => {
-		setIndex((oldIndex) => {
-			const nextIndex = oldIndex + 1;
-			if (nextIndex > data.length - 1) return 0;
-			return nextIndex;
+		setIndex((index) => {
+			let newIndex = index + 1;
+			if (newIndex > data.length - 1) {
+				return 0;
+			}
+			return newIndex;
 		});
 	};
+
 	const prevPage = () => {
-		setIndex((oldIndex) => {
-			const prevIndex = oldIndex - 1;
-			if (prevIndex < 0) return data.length - 1;
-			return prevIndex;
+		setIndex((index) => {
+			let newIndex = index - 1;
+			if (newIndex < 0) {
+				return data.length - 1;
+			}
+			return newIndex;
 		});
-	};
-	const randomPage = () => {
-		const random = Math.floor(Math.random() * data.length);
-		setIndex(random);
 	};
 
 	useEffect(() => {
 		setReview(data[index]);
 	}, [index]);
 
+	const randomPage = () => {
+		const random = Math.floor(Math.random() * data.length);
+		setIndex(random);
+	};
+
 	return (
 		<Wrapper className='App'>
 			<div className='title'>
-				<h1>Our Reviews</h1>
+				<h1>Our reviews</h1>
 				<div className='underline'></div>
-				<Review
-					{...review}
-					nextPage={nextPage}
-					prevPage={prevPage}
-					randomPage={randomPage}
-				/>
 			</div>
+			<Review
+				{...review}
+				randomPage={randomPage}
+				nextPage={nextPage}
+				prevPage={prevPage}
+			/>
+			;
 		</Wrapper>
 	);
 }

@@ -8,13 +8,11 @@ export interface IReview {
 	job: string;
 	image: string;
 	text: string;
-}
-export interface IReviewFunction {
 	prevPage: () => void;
 	nextPage: () => void;
 	randomPage: () => void;
 }
-const Review: React.FC<IReview & IReviewFunction> = ({
+const Review = ({
 	id,
 	name,
 	job,
@@ -23,7 +21,7 @@ const Review: React.FC<IReview & IReviewFunction> = ({
 	nextPage,
 	prevPage,
 	randomPage,
-}) => {
+}: IReview) => {
 	return (
 		<Wrapper>
 			<div className='review__image'>
@@ -44,7 +42,7 @@ const Review: React.FC<IReview & IReviewFunction> = ({
 				</button>
 			</div>
 			<button className='surprise' onClick={randomPage}>
-				Random
+				Surprise me
 			</button>
 		</Wrapper>
 	);

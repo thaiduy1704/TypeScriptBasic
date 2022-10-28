@@ -8,13 +8,11 @@ export interface IReview {
 	job: string;
 	image: string;
 	text: string;
-}
-export interface IReviewFunction {
 	prevPage: () => void;
 	nextPage: () => void;
-	randomPage: () => void;
+	randowPage: () => void;
 }
-const Review: React.FC<IReview & IReviewFunction> = ({
+const Review = ({
 	id,
 	name,
 	job,
@@ -22,32 +20,9 @@ const Review: React.FC<IReview & IReviewFunction> = ({
 	text,
 	nextPage,
 	prevPage,
-	randomPage,
-}) => {
-	return (
-		<Wrapper>
-			<div className='review__image'>
-				<img src={image} alt={name} />
-				<span className='review__quote'>
-					<IoMdQuote />
-				</span>
-			</div>
-			<h3>{name}</h3>
-			<h4>{job}</h4>
-			<p>{text}</p>
-			<div className='review__btn-page'>
-				<button onClick={prevPage}>
-					<FcPrevious />
-				</button>
-				<button onClick={nextPage}>
-					<FcNext />
-				</button>
-			</div>
-			<button className='surprise' onClick={randomPage}>
-				Random
-			</button>
-		</Wrapper>
-	);
+	randowPage,
+}: IReview) => {
+	return <Wrapper></Wrapper>;
 };
 const Wrapper = styled.article`
 	display: flex;
