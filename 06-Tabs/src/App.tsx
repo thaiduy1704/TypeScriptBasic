@@ -6,40 +6,39 @@ import { MdDoubleArrow } from 'react-icons/md';
 
 const url: string = 'https://course-api.com/react-tabs-project';
 
-interface Job {
+export interface IJobs {
 	id: string;
 	order: number;
-	dates: string;
 	title: string;
-	company: string;
+	dates: string;
 	duties: string[];
+	company: string;
 }
 
 function App() {
-	const [loading, setLoading] = useState<Boolean>(true);
-	const [jobs, setJobs] = useState<Job[]>([]);
-	const [indexValue, setIndexValue] = useState<number>(1);
+	const [value, setValue] = useState(1);
+	const [jobs, setJobs] = useState<IJobs[]>([]);
+	const [isLoading, setIsLoading] = useState<Boolean>(true);
 
-	const setIndexJobs = (id: number) => {
-		setIndexValue(id);
+	const selectedIndexJob = (id: number) => {
+		setValue(id);
 	};
 
 	const fetchData = async (url: string) => {
 		try {
-			setLoading(true);
+			setIsLoading(true);
 			const response = await axios(url);
 			setJobs(response.data);
-			setLoading(false);
+			setIsLoading(false);
 		} catch (error) {
-			setLoading(false);
-			console.log(error);
+			setIsLoading(false);
 		}
 	};
 
 	useEffect(() => {
 		fetchData(url);
-	}, []);
-	if (loading) {
+	}, [value]);
+	if (isLoading) {
 		return (
 			<Wrapper>
 				<div className='loading'>
@@ -49,7 +48,7 @@ function App() {
 		);
 	}
 
-	const { title, dates, duties, company } = jobs[indexValue];
+	const { title, dates, duties, company } = jobs[value];
 
 	return (
 		<Wrapper>
@@ -57,17 +56,14 @@ function App() {
 				<h1>Experience</h1>
 				<div className='underline'></div>
 			</div>
-
 			<div className='content'>
 				<div className='tab'>
 					{jobs.map((job, index) => {
 						return (
 							<button
-								className={`${indexValue === index ? 'active' : ''}`}
-								onClick={() => {
-									setIndexJobs(index);
-								}}
-								key={job.id}>
+								className={`${value === index ? 'active' : ''}`}
+								key={job.id}
+								onClick={() => selectedIndexJob(index)}>
 								{job.company}
 							</button>
 						);
@@ -83,8 +79,7 @@ function App() {
 								<li key={index}>
 									<span>
 										<MdDoubleArrow />
-									</span>
-									{''}
+									</span>{' '}
 									{duty}
 								</li>
 							);
