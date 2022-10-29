@@ -14,11 +14,11 @@ function App() {
 	console.log('next', nextIndex);
 	console.log('length', data.length);
 
-	useEffect(() => {
-		setInterval(() => {
-			setIndex(index + 1);
-		}, 3000);
-	});
+	// useEffect(() => {
+	// 	setInterval(() => {
+	// 		setIndex(index + 1);
+	// 	}, 000);
+	// }, []);
 
 	return (
 		<Wrapper>

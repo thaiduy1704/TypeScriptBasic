@@ -93,7 +93,7 @@ const Icon = styled.div`
 	padding: 1rem;
 	font-size: 2rem;
 	color: white;
-	background-color: transparent;
+	background-color: #617d98;
 	border-radius: var(--radius);
 	font-size: 5rem;
 	color: var(--clr-primary);

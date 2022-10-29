@@ -4,40 +4,11 @@ import { useEffect } from 'react';
 
 import { data } from './data/data';
 import SingleInfo from './components/SingleInfo';
-import { useIndex } from './hooks/useIndex';
 
 function App() {
-	const [index, prevIndex, nextIndex, setIndex] = useIndex(0, data.length - 1);
-
-	console.log('Index', index);
-	console.log('pre', prevIndex);
-	console.log('next', nextIndex);
-	console.log('length', data.length);
-
-	useEffect(() => {
-		setInterval(() => {
-			setIndex(index + 1);
-		}, 3000);
-	});
-
 	return (
 		<Wrapper>
-			<h1>Reviews</h1>
-			<Container>
-				<Icon className='pre' onClick={() => setIndex(index - 1)}>
-					<FiChevronLeft />
-				</Icon>
-				{data.map((item, id) => {
-					let position = '';
-					if (id === index) position = 'active';
-					if (id === prevIndex) position = 'pre';
-					if (id === nextIndex) position = 'next';
-					return <SingleInfo {...item} position={position} key={id} />;
-				})}
-				<Icon className='next' onClick={() => setIndex(index + 1)}>
-					<FiChevronRight />
-				</Icon>
-			</Container>
+			<h1>Revies</h1>
 		</Wrapper>
 	);
 }

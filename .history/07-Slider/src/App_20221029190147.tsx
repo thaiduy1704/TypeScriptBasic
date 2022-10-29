@@ -7,7 +7,7 @@ import SingleInfo from './components/SingleInfo';
 import { useIndex } from './hooks/useIndex';
 
 function App() {
-	const [index, prevIndex, nextIndex, setIndex] = useIndex(0, data.length - 1);
+	const [index, prevIndex, nextIndex, setIndex] = useIndex(0, data.length);
 
 	console.log('Index', index);
 	console.log('pre', prevIndex);
@@ -18,7 +18,7 @@ function App() {
 		setInterval(() => {
 			setIndex(index + 1);
 		}, 3000);
-	});
+	}, []);
 
 	return (
 		<Wrapper>

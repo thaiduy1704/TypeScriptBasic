@@ -18,7 +18,7 @@ function App() {
 		setInterval(() => {
 			setIndex(index + 1);
 		}, 3000);
-	});
+	}, [index]);
 
 	return (
 		<Wrapper>

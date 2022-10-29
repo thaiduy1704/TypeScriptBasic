@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { FaQuoteRight } from 'react-icons/fa';
+import React from 'react';
+
 export interface IPerson {
 	id: number;
 	image: string;
@@ -8,22 +8,8 @@ export interface IPerson {
 	quote: string;
 	position: string;
 }
-const SingleInfo = ({ id, image, name, title, quote, position }: IPerson) => {
-	return (
-		<Wrapper>
-			<article className={position}>
-				<div className='info'>
-					<img src={image} alt={name} />
-					<h3>{name}</h3>
-					<h4>{title}</h4>
-					<p>{quote}</p>
-				</div>
-				<Icon>
-					<FaQuoteRight />
-				</Icon>
-			</article>
-		</Wrapper>
-	);
+const SingleInfo = ({ id, image, name, title, quote }: IPerson) => {
+	return <Wrapper></Wrapper>;
 };
 
 const Wrapper = styled.div`
@@ -93,7 +79,7 @@ const Icon = styled.div`
 	padding: 1rem;
 	font-size: 2rem;
 	color: white;
-	background-color: transparent;
+	background-color: #617d98;
 	border-radius: var(--radius);
 	font-size: 5rem;
 	color: var(--clr-primary);

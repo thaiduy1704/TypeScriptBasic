@@ -7,18 +7,13 @@ import SingleInfo from './components/SingleInfo';
 import { useIndex } from './hooks/useIndex';
 
 function App() {
-	const [index, prevIndex, nextIndex, setIndex] = useIndex(0, data.length - 1);
-
-	console.log('Index', index);
-	console.log('pre', prevIndex);
-	console.log('next', nextIndex);
-	console.log('length', data.length);
+	const [index, prevIndex, nextIndex, setIndex] = useIndex(0, data.length);
 
 	useEffect(() => {
 		setInterval(() => {
 			setIndex(index + 1);
-		}, 3000);
-	});
+		}, 10000);
+	}, []);
 
 	return (
 		<Wrapper>

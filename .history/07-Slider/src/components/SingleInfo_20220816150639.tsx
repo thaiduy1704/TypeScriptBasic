@@ -1,6 +1,7 @@
+import React from 'react';
 import styled from 'styled-components';
 import { FaQuoteRight } from 'react-icons/fa';
-export interface IPerson {
+interface ISingleInfo {
 	id: number;
 	image: string;
 	name: string;
@@ -8,7 +9,15 @@ export interface IPerson {
 	quote: string;
 	position: string;
 }
-const SingleInfo = ({ id, image, name, title, quote, position }: IPerson) => {
+
+const SingleInfo: React.FC<ISingleInfo> = ({
+	id,
+	image,
+	name,
+	title,
+	position,
+	quote,
+}) => {
 	return (
 		<Wrapper>
 			<article className={position}>
@@ -93,7 +102,7 @@ const Icon = styled.div`
 	padding: 1rem;
 	font-size: 2rem;
 	color: white;
-	background-color: transparent;
+	background-color: #617d98;
 	border-radius: var(--radius);
 	font-size: 5rem;
 	color: var(--clr-primary);

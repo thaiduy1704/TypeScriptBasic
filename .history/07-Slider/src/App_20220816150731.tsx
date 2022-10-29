@@ -1,18 +1,12 @@
 import styled from 'styled-components';
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 import { useEffect } from 'react';
-
+import { useIndex } from './hooks/useIndex';
 import { data } from './data/data';
 import SingleInfo from './components/SingleInfo';
-import { useIndex } from './hooks/useIndex';
 
 function App() {
 	const [index, prevIndex, nextIndex, setIndex] = useIndex(0, data.length - 1);
-
-	console.log('Index', index);
-	console.log('pre', prevIndex);
-	console.log('next', nextIndex);
-	console.log('length', data.length);
 
 	useEffect(() => {
 		setInterval(() => {
@@ -22,19 +16,35 @@ function App() {
 
 	return (
 		<Wrapper>
-			<h1>Reviews</h1>
+			<h1>Review</h1>
 			<Container>
-				<Icon className='pre' onClick={() => setIndex(index - 1)}>
+				<Icon
+					onClick={() => {
+						setIndex(index - 1);
+					}}
+					className='pre'>
 					<FiChevronLeft />
 				</Icon>
-				{data.map((item, id) => {
+				{data.map((person, id) => {
 					let position = '';
-					if (id === index) position = 'active';
-					if (id === prevIndex) position = 'pre';
-					if (id === nextIndex) position = 'next';
-					return <SingleInfo {...item} position={position} key={id} />;
+					if (id === index) {
+						position = 'active';
+					}
+					if (id === prevIndex) {
+						position = 'pre';
+					}
+					if (id === nextIndex) {
+						position = 'next';
+					}
+
+					return <SingleInfo {...person} position={position} key={id} />;
 				})}
-				<Icon className='next' onClick={() => setIndex(index + 1)}>
+
+				<Icon
+					onClick={() => {
+						setIndex(index + 1);
+					}}
+					className='next'>
 					<FiChevronRight />
 				</Icon>
 			</Container>
