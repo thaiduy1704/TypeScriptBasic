@@ -89,11 +89,7 @@ function App() {
 
 				<Button onClick={generateLorem}>Generate</Button>
 			</InputContainer>
-			<Content>
-				{content.split('\n').map((item, id) => {
-					return <p key={id}>{item}</p>;
-				})}
-			</Content>
+			<Content>{content.split('\n').map((item, id) => {})}</Content>
 		</Container>
 	);
 }

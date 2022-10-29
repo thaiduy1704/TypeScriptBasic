@@ -2,11 +2,6 @@ import styled from 'styled-components';
 import { loremIpsum, ILoremIpsumParams, LoremIpsum } from 'lorem-ipsum';
 import { useState, ChangeEvent } from 'react';
 
-enum Units {
-	words = 'words',
-	paragraphs = 'paragraphs',
-	sentences = 'sentences',
-}
 function App() {
 	const [configLorem, setConfigLorem] = useState<ILoremIpsumParams>({
 		count: 2, // Number of "words", "sentences", or "paragraphs"
@@ -18,11 +13,11 @@ function App() {
 		sentenceUpperBound: 15, // Max. number of words per sentence.
 		suffix: '\n', // Line ending, defaults to "\n" or "\r\n" (win32)
 		units: Units.paragraphs, // paragraph(s), "sentence(s)", or "word(s)"
-		// words: ['ad', 'su'], // Array of words to draw from
 	});
-	console.log(configLorem);
 
-	const onUpdateConfigLorem = (
+	const [content, setContent] = useState<string>('');
+
+	const changeHandle = (
 		e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
 	) => {
 		const name = e.target.id;
@@ -30,64 +25,41 @@ function App() {
 		setConfigLorem({ ...configLorem, [name]: value });
 	};
 
-	const [content, setContent] = useState<string>('');
-	const generateLorem = () => {
+	const genterateLorem = () => {
 		setContent(loremIpsum(configLorem));
 	};
+
 	return (
-		<Container className='App'>
+		<Container>
 			<h1>Lorem Ipsum Generator</h1>
 			<InputContainer>
-				<Label htmlFor='count'>Count:</Label>
+				<Label htmlFor='count'>Count: </Label>
 				<Input
 					id='count'
 					type='number'
 					value={configLorem.count}
-					onChange={onUpdateConfigLorem}
+					onChange={changeHandle}
 				/>
-
-				<Label htmlFor='paragraphLowerBound'>Paragraph Lower Bound:</Label>
-				<Input
-					id='paragraphLowerBound'
-					type='number'
-					value={configLorem.paragraphLowerBound}
-					onChange={onUpdateConfigLorem}
-				/>
-
-				<Label htmlFor='paragraphUpperBound'>Paragraph Upper Bound:</Label>
-				<Input
-					id='paragraphUpperBound'
-					type='number'
-					value={configLorem.paragraphUpperBound}
-					onChange={onUpdateConfigLorem}
-				/>
-
-				<Label htmlFor='sentenceLowerBound'>Sentence Lower Bound:</Label>
-				<Input
-					id='sentenceLowerBound'
-					type='number'
-					value={configLorem.sentenceLowerBound}
-					onChange={onUpdateConfigLorem}
-				/>
-				<Label htmlFor='sentenceUpperBound'>Sentence Upper Bound:</Label>
-				<Input
-					id='sentenceUpperBound'
-					type='number'
-					value={configLorem.sentenceUpperBound}
-					onChange={onUpdateConfigLorem}
-				/>
+				<Label htmlFor='paragraphLowerBound'>Paragraph Lower Bound </Label>
+				<Input id='paragraphLowerBound' type='number' onChange={changeHandle} />
+				<Label htmlFor='paragraphUpperBound'>Paragraph Upper Bound</Label>
+				<Input id='paragraphUpperBound' type='number' onChange={changeHandle} />
+				<Label htmlFor='sentenceLowerBound'>Sentence Lower Bound </Label>
+				<Input id='sentenceLowerBound' type='number' onChange={changeHandle} />
+				<Label htmlFor='count'>Sentence Upper Bound </Label>
+				<Input id='count' type='number' onChange={changeHandle} />
 				<Label htmlFor='units'>Units</Label>
-				<select
-					id='units'
-					name='units'
-					value={configLorem.units}
-					onChange={onUpdateConfigLorem}>
+				<select name='units' id='units' onChange={changeHandle}>
 					<option value='words'>Words</option>
 					<option value='sentences'>Sentences</option>
 					<option value='paragraphs'>Paragraphs</option>
 				</select>
-
-				<Button onClick={generateLorem}>Generate</Button>
+				<Button
+					onClick={() => {
+						genterateLorem();
+					}}>
+					Generate
+				</Button>
 			</InputContainer>
 			<Content>
 				{content.split('\n').map((item, id) => {
@@ -133,11 +105,11 @@ const Button = styled.button`
 `;
 
 const InputContainer = styled.div`
-	max-width: 100vw;
+	max-width: 80vw;
 	display: flex;
-	justify-content: center;
 	flex-wrap: wrap;
 	align-items: center;
+	justify-content: left;
 `;
 
 const Input = styled.input`

@@ -31,9 +31,7 @@ function App() {
 	};
 
 	const [content, setContent] = useState<string>('');
-	const generateLorem = () => {
-		setContent(loremIpsum(configLorem));
-	};
+
 	return (
 		<Container className='App'>
 			<h1>Lorem Ipsum Generator</h1>
@@ -77,23 +75,19 @@ function App() {
 					onChange={onUpdateConfigLorem}
 				/>
 				<Label htmlFor='units'>Units</Label>
+
 				<select
-					id='units'
-					name='units'
 					value={configLorem.units}
+					name='units'
+					id='units'
 					onChange={onUpdateConfigLorem}>
 					<option value='words'>Words</option>
 					<option value='sentences'>Sentences</option>
 					<option value='paragraphs'>Paragraphs</option>
 				</select>
-
-				<Button onClick={generateLorem}>Generate</Button>
+				<Button>Generate</Button>
 			</InputContainer>
-			<Content>
-				{content.split('\n').map((item, id) => {
-					return <p key={id}>{item}</p>;
-				})}
-			</Content>
+			<Content></Content>
 		</Container>
 	);
 }

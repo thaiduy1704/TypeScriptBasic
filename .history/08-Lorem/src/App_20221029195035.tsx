@@ -20,38 +20,20 @@ function App() {
 		units: Units.paragraphs, // paragraph(s), "sentence(s)", or "word(s)"
 		// words: ['ad', 'su'], // Array of words to draw from
 	});
-	console.log(configLorem);
-
-	const onUpdateConfigLorem = (
-		e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-	) => {
-		const name = e.target.id;
-		const value = name === 'units' ? e.target.value : Number(e.target.value);
-		setConfigLorem({ ...configLorem, [name]: value });
-	};
-
 	const [content, setContent] = useState<string>('');
-	const generateLorem = () => {
-		setContent(loremIpsum(configLorem));
-	};
+
 	return (
 		<Container className='App'>
 			<h1>Lorem Ipsum Generator</h1>
 			<InputContainer>
 				<Label htmlFor='count'>Count:</Label>
-				<Input
-					id='count'
-					type='number'
-					value={configLorem.count}
-					onChange={onUpdateConfigLorem}
-				/>
+				<Input id='count' type='number' value={configLorem.count} />
 
 				<Label htmlFor='paragraphLowerBound'>Paragraph Lower Bound:</Label>
 				<Input
 					id='paragraphLowerBound'
 					type='number'
 					value={configLorem.paragraphLowerBound}
-					onChange={onUpdateConfigLorem}
 				/>
 
 				<Label htmlFor='paragraphUpperBound'>Paragraph Upper Bound:</Label>
@@ -59,7 +41,6 @@ function App() {
 					id='paragraphUpperBound'
 					type='number'
 					value={configLorem.paragraphUpperBound}
-					onChange={onUpdateConfigLorem}
 				/>
 
 				<Label htmlFor='sentenceLowerBound'>Sentence Lower Bound:</Label>
@@ -67,33 +48,22 @@ function App() {
 					id='sentenceLowerBound'
 					type='number'
 					value={configLorem.sentenceLowerBound}
-					onChange={onUpdateConfigLorem}
 				/>
 				<Label htmlFor='sentenceUpperBound'>Sentence Upper Bound:</Label>
 				<Input
 					id='sentenceUpperBound'
 					type='number'
 					value={configLorem.sentenceUpperBound}
-					onChange={onUpdateConfigLorem}
 				/>
 				<Label htmlFor='units'>Units</Label>
-				<select
-					id='units'
-					name='units'
-					value={configLorem.units}
-					onChange={onUpdateConfigLorem}>
+				<select id='units' name='units' value={configLorem.units}>
 					<option value='words'>Words</option>
 					<option value='sentences'>Sentences</option>
 					<option value='paragraphs'>Paragraphs</option>
 				</select>
-
-				<Button onClick={generateLorem}>Generate</Button>
+				<Button>Generate</Button>
 			</InputContainer>
-			<Content>
-				{content.split('\n').map((item, id) => {
-					return <p key={id}>{item}</p>;
-				})}
-			</Content>
+			<Content></Content>
 		</Container>
 	);
 }

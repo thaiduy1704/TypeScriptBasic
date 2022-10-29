@@ -87,13 +87,9 @@ function App() {
 					<option value='paragraphs'>Paragraphs</option>
 				</select>
 
-				<Button onClick={generateLorem}>Generate</Button>
+				<Button>Generate</Button>
 			</InputContainer>
-			<Content>
-				{content.split('\n').map((item, id) => {
-					return <p key={id}>{item}</p>;
-				})}
-			</Content>
+			<Content></Content>
 		</Container>
 	);
 }
