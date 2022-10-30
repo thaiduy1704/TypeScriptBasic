@@ -8,14 +8,8 @@ const App = () => {
 	return (
 		<Container>
 			<section className='markdown'>
-				<textarea
-					className='input'
-					value={text}
-					onChange={(e) => setText(e.target.value)}></textarea>
+				<textarea className='input'></textarea>
 			</section>
-			<article className='result'>
-				<ReactMarkdown children={text} remarkPlugins={[remarkGfm]} />
-			</article>
 		</Container>
 	);
 };

@@ -7,15 +7,7 @@ const App = () => {
 	const [text, setText] = useState('# This is markdown');
 	return (
 		<Container>
-			<section className='markdown'>
-				<textarea
-					className='input'
-					value={text}
-					onChange={(e) => setText(e.target.value)}></textarea>
-			</section>
-			<article className='result'>
-				<ReactMarkdown children={text} remarkPlugins={[remarkGfm]} />
-			</article>
+			<section className='markdown'></section>
 		</Container>
 	);
 };

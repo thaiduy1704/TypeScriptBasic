@@ -14,7 +14,7 @@ const App = () => {
 					onChange={(e) => setText(e.target.value)}></textarea>
 			</section>
 			<article className='result'>
-				<ReactMarkdown children={text} remarkPlugins={[remarkGfm]} />
+				<ReactMarkdown children={text} remarkPlugins={remarkGfm} />
 			</article>
 		</Container>
 	);

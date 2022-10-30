@@ -13,9 +13,7 @@ const App = () => {
 					value={text}
 					onChange={(e) => setText(e.target.value)}></textarea>
 			</section>
-			<article className='result'>
-				<ReactMarkdown children={text} remarkPlugins={[remarkGfm]} />
-			</article>
+			<article className='result'></article>
 		</Container>
 	);
 };

@@ -1,13 +1,24 @@
 import styled from 'styled-components';
 import { MdOutlineMenu } from 'react-icons/md';
 
+import { useGlobalContext } from './Context';
 import Modal from './components/Modal';
 import Sidebar from './components/Sidebar';
 
 const App = () => {
+	const { toggleSidebar, showModal } = useGlobalContext();
+
 	return (
 		<Container>
-			<h1>thaiduy</h1>
+			<MenuButton>
+				<MdOutlineMenu onClick={toggleSidebar} />
+			</MenuButton>
+			<Sidebar />
+
+			<button className='show-modal-btn' onClick={showModal}>
+				Show Modal
+			</button>
+			<Modal />
 		</Container>
 	);
 };

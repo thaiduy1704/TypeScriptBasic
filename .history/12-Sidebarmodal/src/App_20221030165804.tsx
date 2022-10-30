@@ -4,13 +4,7 @@ import { MdOutlineMenu } from 'react-icons/md';
 import Modal from './components/Modal';
 import Sidebar from './components/Sidebar';
 
-const App = () => {
-	return (
-		<Container>
-			<h1>thaiduy</h1>
-		</Container>
-	);
-};
+const App = () => {};
 
 const Container = styled.main`
 	position: relative;

@@ -4,17 +4,18 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
 const App = () => {
-	const [text, setText] = useState('# This is markdown');
+	const [markdown, setMarkdown] = useState('# Markdown Generator');
+
 	return (
 		<Container>
 			<section className='markdown'>
 				<textarea
 					className='input'
-					value={text}
-					onChange={(e) => setText(e.target.value)}></textarea>
+					value={markdown}
+					onChange={(e) => setMarkdown(e.target.value)}></textarea>
 			</section>
 			<article className='result'>
-				<ReactMarkdown children={text} remarkPlugins={[remarkGfm]} />
+				<ReactMarkdown children={markdown} remarkPlugins={[remarkGfm]} />
 			</article>
 		</Container>
 	);
