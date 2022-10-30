@@ -1,0 +1,28 @@
+import React from 'react';
+import styled from 'styled-components';
+
+import { ISingleMoveInList } from '../typing';
+const defaultImage =
+	'https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png';
+const Movie = ({ Title, Poster, Year, imdbID }: ISingleMoveInList) => {
+	return (
+		<Container>
+			<div>
+				<img src={Poster === 'N/A' ? defaultImage : Poster} alt={Title} />
+				<div className='info'>
+					<p>{Title}</p>
+					<p>{Year}</p>
+				</div>
+			</div>
+		</Container>
+	);
+};
+const Container = styled.article`
+	position: relative;
+
+	.info {
+		position: absolute;
+	}
+`;
+
+export default Movie;
