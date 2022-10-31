@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../app/hook';
@@ -7,7 +7,7 @@ import { getMovieInfo } from '../feature/movieThunk';
 const SingleMovie = () => {
 	const { id } = useParams();
 
-	const { movieInfo, isLoading } = useAppSelector((store) => store.movie);
+	const { movieInfo } = useAppSelector((store) => store.movie);
 
 	const dispatch = useAppDispatch();
 
